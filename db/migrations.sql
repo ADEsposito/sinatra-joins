@@ -4,15 +4,25 @@ CREATE DATABASE gatest;
 
 \c gatest
 
+CREATE TABLE locations (id SERIAL PRIMARY KEY, name varchar(255));
+
+CREATE TABLE course_locations (id SERIAL PRIMARY KEY, course_id INT references courses(id), location_id INT references locations(id));
+
 CREATE TABLE courses (id SERIAL PRIMARY KEY, name varchar(255));
 
 CREATE TABLE students (id SERIAL PRIMARY KEY, name varchar(255), course_id INT references courses(id));
+
+INSERT INTO locations (NAME) VALUES ('Chicago');
+
+INSERT INTO locations (NAME) VALUES ('New York');
 
 INSERT INTO courses (NAME) VALUES ('WDI');
 
 INSERT INTO courses (name) VALUES ('DSI');
 
 INSERT INTO courses (name) VALUES ('UXDI');
+
+INSERT INTO course_locations (course_id, location_id) VALUES (1,1);
 
 INSERT INTO students (name, course_id) VALUES ('Jeff', 1);
 

@@ -6,8 +6,18 @@ class CourseController < ApplicationController
   end
 
   get '/:id' do
+    id = params[:id]
+
     @course = Course.find(id)
     @course.to_json
+  end
+
+  get '/:id/locations' do
+    id = params[:id]
+
+    @course = Course.find(id)
+    @locations = @course.locations
+    @locations.to_json
   end
 
   post '/' do
