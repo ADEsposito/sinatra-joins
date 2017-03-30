@@ -12,22 +12,6 @@ class CourseController < ApplicationController
     @course.to_json
   end
 
-  get '/:id/students' do
-    id = params[:id]
-
-    @course = Course.find(id)
-    @students = @course.students
-    @students.to_json
-  end
-
-  get '/:id/locations' do
-    id = params[:id]
-
-    @course = Course.find(id)
-    @locations = @course.locations
-    @locations.to_json
-  end
-
   post '/' do
     my_course = JSON.parse(request.body.read)
     @course = Course.new
